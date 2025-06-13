@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+    --background: #171717;
+    --foreground: #14FF3F;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+}
+
+@font-face{
+    font-family: 'Somy';
+    src: url('assets/somybmp.woff2');
+}
+
+html, body {
+    font-family: "Somy", sans-serif;
+}
