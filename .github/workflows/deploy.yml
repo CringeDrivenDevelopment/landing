@@ -35,7 +35,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: '10.8.0'
+          version: '10'
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -45,7 +45,7 @@ jobs:
           cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Build and install deps
-        run: pnpm install && pnpm run generate
+        run: pnpm install && pnpm generate
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
