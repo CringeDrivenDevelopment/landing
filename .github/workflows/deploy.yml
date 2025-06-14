@@ -53,7 +53,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # command: pages project list
-          command: pages deploy dist --project-name=cdd
+          command: pages deploy dist --project-name=landing
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save packages to cache
