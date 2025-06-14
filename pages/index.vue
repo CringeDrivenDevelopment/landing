@@ -36,3 +36,4 @@ import {ArrowDown} from "lucide-vue-next";
     </div>
   </section>
 </template>
+
