@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-    --background: #171717;
+    --background: #000000;
     --foreground: #14FF3F;
 }
 
@@ -13,13 +13,24 @@
 body {
     background: var(--background);
     color: var(--foreground);
+    font-family: "Geist Mono", sans-serif;
 }
 
 @font-face{
     font-family: 'Somy';
-    src: url('assets/somybmp.woff2');
+    src: url('./somy.ttf');
 }
 
-html, body {
-    font-family: "Somy", sans-serif;
+@font-face{
+    font-family: 'Geist Mono';
+    src: url("./GeistMono.ttf")
 }
+
+h1, h2, h3 {
+    color: var(--foreground);
+    font-family: "Somy", sans-serif;
+    letter-spacing: -2px;
+}
+
+
+
