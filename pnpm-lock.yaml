@@ -47,6 +47,9 @@ importers:
       vue-router:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.16(typescript@5.8.3))
+      lucide-vue-next:
+          specifier: ^0.515.0
+          version: 0.515.0,
 
 packages:
 
