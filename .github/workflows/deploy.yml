@@ -1,0 +1,63 @@
+name: deploy.yml
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      deployments: write
+
+    concurrency:
+      group: 'pages'
+      cancel-in-progress: true
+
+    name: Deploy to Cloudflare Pages
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Restore cached packages
+        id: restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+              node_modules
+          key: packages
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10.8.0'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Build and install deps
+        run: pnpm install && pnpm run generate
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=landing
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save packages to cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            node_modules
+          key: ${{ steps.restore.outputs.cache-primary-key }}

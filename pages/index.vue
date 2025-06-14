@@ -3,7 +3,7 @@
     <main class="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
       <div class="flex flex-col space-y-2">
         <SplitText
-            text="nword"
+            text="cringe"
             class-name="text-6xl font-semibold text-center"
             :delay="400"
             :duration="0.6"
